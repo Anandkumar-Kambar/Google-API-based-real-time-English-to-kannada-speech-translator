@@ -1,4 +1,4 @@
-# Import Necessary Libraries
+# Import libraries
 import speech_recognition as spr
 from gtts import gTTS
 import os
@@ -20,7 +20,8 @@ mc = spr.Microphone(device_index=0)  # Replace 0 with your microphone index from
 def play_audio(file_path):
     if platform.system() == "Windows":
         os.system(f"start {file_path}")
-    elif platform.system() == "Darwin":  # macOS
+    elif platform.system() == "Darwin": 
+        # macOS
         os.system(f"open {file_path}")
     else:  # Linux
         os.system(f"xdg-open {file_path}")
@@ -28,7 +29,7 @@ def play_audio(file_path):
 # Function for Translation and Text-to-Speech
 def translate_and_speak(from_lang, to_lang):
     with mc as source:
-        print("Speak a sentence...")
+        print("Speak a sentence.....")
         audio = recog2.listen(source)
 
         try:
@@ -55,7 +56,7 @@ def translate_and_speak(from_lang, to_lang):
 try:
     with mc as source:
         print("Speak 'Hello' for English → Kannada OR 'Namaskara' for Kannada → English.")
-        print("-------------------------------------------------------------")
+        print("------------------------------------------------------------------------------")
         audio = recog1.listen(source)
 
     # Recognize the initial command to decide the translation direction
@@ -74,4 +75,5 @@ except spr.UnknownValueError:
 except spr.RequestError as e:
     print(f"Error with the recognition service: {e}")
 except Exception as e:
+
     print(f"An unexpected error occurred: {e}") 
